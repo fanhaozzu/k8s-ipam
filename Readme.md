@@ -11,17 +11,25 @@ When an ip is requested, the plugin retrieves the configured IPPool from the kub
     * If the pod is running a new IP is chosen and the process is repeated until an ip is assigned.
 
 
-Example IPPool CRD:
-```yaml
-apiVersion: k8s.pgc.umn.edu/v1alpha1
-kind: IPPool
-objectMeta:
-  name: samplePool
-spec:
-  range: "2001:db8:0:1::/65"
-  netmaskBits: 64
-  gateway: "2001:db8:0:1::1"
-  staticReservations:
-    namespace-bar:
-      pod-foo: 2001:db8:0:1::23
+Example IPPool JSON:
+```json
+{
+    "apiVersion":"ipam.k8s.io/v1alpha1",
+    "kind":"IPPool",
+    "metadata":{
+        "name":"ippool"
+    },
+    "spec":{
+        "ipPoolSubs":[
+            {
+                "range":"10.19.120.0-10.19.123.254/22",
+                "reservedRanges":[
+                    "10.19.122.230-10.19.122.255/22"
+                ],
+                "netmaskBits":22,
+                "gateway":"10.19.123.254"
+            }
+        ]
+    }
+}
 ```  

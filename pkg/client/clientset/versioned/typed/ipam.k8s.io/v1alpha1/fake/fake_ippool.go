@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/k8s.domeos.sohuno.com/v1alpha1"
+	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/ipam.k8s.io/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -30,12 +30,12 @@ import (
 
 // FakeIPPools implements IPPoolInterface
 type FakeIPPools struct {
-	Fake *FakeK8sV1alpha1
+	Fake *FakeIpamV1alpha1
 }
 
-var ippoolsResource = schema.GroupVersionResource{Group: "k8s.pgc.umn.edu", Version: "v1alpha1", Resource: "ippools"}
+var ippoolsResource = schema.GroupVersionResource{Group: "ipam.k8s.io", Version: "v1alpha1", Resource: "ippools"}
 
-var ippoolsKind = schema.GroupVersionKind{Group: "k8s.pgc.umn.edu", Version: "v1alpha1", Kind: "IPPool"}
+var ippoolsKind = schema.GroupVersionKind{Group: "ipam.k8s.io", Version: "v1alpha1", Kind: "IPPool"}
 
 // Get takes name of the iPPool, and returns the corresponding iPPool object, and an error if there is any.
 func (c *FakeIPPools) Get(name string, options v1.GetOptions) (result *v1alpha1.IPPool, err error) {

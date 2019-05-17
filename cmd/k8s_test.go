@@ -4,7 +4,7 @@ import (
 	"net"
 	"testing"
 
-	"github.com/domeos/k8s-ipam/pkg/api/k8s.domeos.sohuno.com/v1alpha1"
+	"github.com/domeos/k8s-ipam/pkg/api/ipam.k8s.io/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
 )
 

@@ -25,7 +25,7 @@ import (
 
 	versioned "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/domeos/k8s-ipam/pkg/client/informers/externalversions/internalinterfaces"
-	k8sdomeossohunocom "github.com/domeos/k8s-ipam/pkg/client/informers/externalversions/k8s.domeos.sohuno.com"
+	ipamk8sio "github.com/domeos/k8s-ipam/pkg/client/informers/externalversions/ipam.k8s.io"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
@@ -172,9 +172,9 @@ type SharedInformerFactory interface {
 	ForResource(resource schema.GroupVersionResource) (GenericInformer, error)
 	WaitForCacheSync(stopCh <-chan struct{}) map[reflect.Type]bool
 
-	K8s() k8sdomeossohunocom.Interface
+	Ipam() ipamk8sio.Interface
 }
 
-func (f *sharedInformerFactory) K8s() k8sdomeossohunocom.Interface {
-	return k8sdomeossohunocom.New(f, f.namespace, f.tweakListOptions)
+func (f *sharedInformerFactory) Ipam() ipamk8sio.Interface {
+	return ipamk8sio.New(f, f.namespace, f.tweakListOptions)
 }

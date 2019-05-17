@@ -19,22 +19,22 @@ limitations under the License.
 package fake
 
 import (
-	v1alpha1 "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned/typed/k8s.domeos.sohuno.com/v1alpha1"
+	v1alpha1 "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned/typed/ipam.k8s.io/v1alpha1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )
 
-type FakeK8sV1alpha1 struct {
+type FakeIpamV1alpha1 struct {
 	*testing.Fake
 }
 
-func (c *FakeK8sV1alpha1) IPPools() v1alpha1.IPPoolInterface {
+func (c *FakeIpamV1alpha1) IPPools() v1alpha1.IPPoolInterface {
 	return &FakeIPPools{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
-func (c *FakeK8sV1alpha1) RESTClient() rest.Interface {
+func (c *FakeIpamV1alpha1) RESTClient() rest.Interface {
 	var ret *rest.RESTClient
 	return ret
 }

@@ -6,7 +6,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/domeos/k8s-ipam/pkg/api/k8s.domeos.sohuno.com/v1alpha1"
+	"github.com/domeos/k8s-ipam/pkg/api/ipam.k8s.io/v1alpha1"
 	ipamclient "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned"
 	corev1 "k8s.io/api/core/v1"
 	v1beta1 "k8s.io/api/apps/v1beta1"
@@ -86,7 +86,7 @@ func (k *KubeClient) GetIPPool() (*v1alpha1.IPPool, error) {
 		return nil, fmt.Errorf("unable to create client: %v", err)
 	}
 
-	return client.K8sV1alpha1().IPPools().Get(k.IPPoolName, metav1.GetOptions{})
+	return client.IpamV1alpha1().IPPools().Get(k.IPPoolName, metav1.GetOptions{})
 }
 
 func (k *KubeClient) UpdateIPPool(pool *v1alpha1.IPPool) error {
@@ -100,7 +100,7 @@ func (k *KubeClient) UpdateIPPool(pool *v1alpha1.IPPool) error {
 		return fmt.Errorf("unable to create client: %v", err)
 	}
 
-	_, err = client.K8sV1alpha1().IPPools().Update(pool)
+	_, err = client.IpamV1alpha1().IPPools().Update(pool)
 	return err
 }
 

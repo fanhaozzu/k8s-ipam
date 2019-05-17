@@ -21,7 +21,7 @@ package v1alpha1
 import (
 	"time"
 
-	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/k8s.domeos.sohuno.com/v1alpha1"
+	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/ipam.k8s.io/v1alpha1"
 	scheme "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned/scheme"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	types "k8s.io/apimachinery/pkg/types"
@@ -55,7 +55,7 @@ type iPPools struct {
 }
 
 // newIPPools returns a IPPools
-func newIPPools(c *K8sV1alpha1Client) *iPPools {
+func newIPPools(c *IpamV1alpha1Client) *iPPools {
 	return &iPPools{
 		client: c.RESTClient(),
 	}

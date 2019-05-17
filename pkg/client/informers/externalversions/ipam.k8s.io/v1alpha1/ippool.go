@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	k8sdomeossohunocomv1alpha1 "github.com/domeos/k8s-ipam/pkg/api/k8s.domeos.sohuno.com/v1alpha1"
+	ipamk8siov1alpha1 "github.com/domeos/k8s-ipam/pkg/api/ipam.k8s.io/v1alpha1"
 	versioned "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned"
 	internalinterfaces "github.com/domeos/k8s-ipam/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/domeos/k8s-ipam/pkg/client/listers/k8s.domeos.sohuno.com/v1alpha1"
+	v1alpha1 "github.com/domeos/k8s-ipam/pkg/client/listers/ipam.k8s.io/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
@@ -60,16 +60,16 @@ func NewFilteredIPPoolInformer(client versioned.Interface, resyncPeriod time.Dur
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.K8sV1alpha1().IPPools().List(options)
+				return client.IpamV1alpha1().IPPools().List(options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.K8sV1alpha1().IPPools().Watch(options)
+				return client.IpamV1alpha1().IPPools().Watch(options)
 			},
 		},
-		&k8sdomeossohunocomv1alpha1.IPPool{},
+		&ipamk8siov1alpha1.IPPool{},
 		resyncPeriod,
 		indexers,
 	)
@@ -80,7 +80,7 @@ func (f *iPPoolInformer) defaultInformer(client versioned.Interface, resyncPerio
 }
 
 func (f *iPPoolInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&k8sdomeossohunocomv1alpha1.IPPool{}, f.defaultInformer)
+	return f.factory.InformerFor(&ipamk8siov1alpha1.IPPool{}, f.defaultInformer)
 }
 
 func (f *iPPoolInformer) Lister() v1alpha1.IPPoolLister {

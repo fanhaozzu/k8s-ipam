@@ -20,8 +20,8 @@ package fake
 
 import (
 	clientset "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned"
-	k8sv1alpha1 "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned/typed/k8s.domeos.sohuno.com/v1alpha1"
-	fakek8sv1alpha1 "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned/typed/k8s.domeos.sohuno.com/v1alpha1/fake"
+	ipamv1alpha1 "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned/typed/ipam.k8s.io/v1alpha1"
+	fakeipamv1alpha1 "github.com/domeos/k8s-ipam/pkg/client/clientset/versioned/typed/ipam.k8s.io/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"
@@ -71,12 +71,12 @@ func (c *Clientset) Discovery() discovery.DiscoveryInterface {
 
 var _ clientset.Interface = &Clientset{}
 
-// K8sV1alpha1 retrieves the K8sV1alpha1Client
-func (c *Clientset) K8sV1alpha1() k8sv1alpha1.K8sV1alpha1Interface {
-	return &fakek8sv1alpha1.FakeK8sV1alpha1{Fake: &c.Fake}
+// IpamV1alpha1 retrieves the IpamV1alpha1Client
+func (c *Clientset) IpamV1alpha1() ipamv1alpha1.IpamV1alpha1Interface {
+	return &fakeipamv1alpha1.FakeIpamV1alpha1{Fake: &c.Fake}
 }
 
-// K8s retrieves the K8sV1alpha1Client
-func (c *Clientset) K8s() k8sv1alpha1.K8sV1alpha1Interface {
-	return &fakek8sv1alpha1.FakeK8sV1alpha1{Fake: &c.Fake}
+// Ipam retrieves the IpamV1alpha1Client
+func (c *Clientset) Ipam() ipamv1alpha1.IpamV1alpha1Interface {
+	return &fakeipamv1alpha1.FakeIpamV1alpha1{Fake: &c.Fake}
 }

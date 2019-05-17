@@ -33,7 +33,7 @@ func TestIPRangeIPMask(t *testing.T) {
 }
 
 func TestIPPoolParse(t *testing.T) {
-	poolString := "apiVersion: k8s.pgc.umn.edu/v1alpha1\nkind: IPPool\nmetadata:\n  name: samplePool\nspec:\n  range: 2001:db8:0:1::/65\n  netmaskBits: 64\n  gateway: \"2001:db8:0:1::1\"\n  staticReservations:\n    namespace-bar:\n      pod-foo: 2001:db8:0:1::23"
+	poolString := "apiVersion: ipam.k8s.io/v1alpha1\nkind: IPPool\nmetadata:\n  name: samplePool\nspec:\n  range: 2001:db8:0:1::/65\n  netmaskBits: 64\n  gateway: \"2001:db8:0:1::1\"\n  staticReservations:\n    namespace-bar:\n      pod-foo: 2001:db8:0:1::23"
 	pool := &IPPool{}
 	err := yaml.NewYAMLOrJSONDecoder(strings.NewReader(poolString), 65536).Decode(pool)
 	if err != nil {

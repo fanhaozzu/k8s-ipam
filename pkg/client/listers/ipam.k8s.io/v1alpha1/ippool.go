@@ -19,7 +19,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/k8s.domeos.sohuno.com/v1alpha1"
+	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/ipam.k8s.io/v1alpha1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/tools/cache"

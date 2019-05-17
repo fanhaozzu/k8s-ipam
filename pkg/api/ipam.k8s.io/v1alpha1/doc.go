@@ -1,3 +1,3 @@
 // +k8s:deepcopy-gen=package,register
-// +groupName=k8s.pgc.umn.edu
+// +groupName=ipam.k8s.io
 package v1alpha1

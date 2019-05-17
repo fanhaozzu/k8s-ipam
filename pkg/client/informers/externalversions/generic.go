@@ -21,7 +21,7 @@ package externalversions
 import (
 	"fmt"
 
-	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/k8s.domeos.sohuno.com/v1alpha1"
+	v1alpha1 "github.com/domeos/k8s-ipam/pkg/api/ipam.k8s.io/v1alpha1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )
@@ -52,9 +52,9 @@ func (f *genericInformer) Lister() cache.GenericLister {
 // TODO extend this to unknown resources with a client pool
 func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource) (GenericInformer, error) {
 	switch resource {
-	// Group=k8s.pgc.umn.edu, Version=v1alpha1
+	// Group=ipam.k8s.io, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("ippools"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.K8s().V1alpha1().IPPools().Informer()}, nil
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Ipam().V1alpha1().IPPools().Informer()}, nil
 
 	}
 
